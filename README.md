@@ -1,6 +1,6 @@
 # cookbook-ruby
 
-Cookbook to install the latest Ruby from the Brightbox PPA.
+Cookbook to install the latest Ruby from the [Brightbox PPA](https://launchpad.net/~brightbox/+archive/ruby-ng).
 
 ## Requirements
 
