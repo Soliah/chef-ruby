@@ -19,4 +19,4 @@
 # limitations under the License.
 #
 
-default["ruby"]["version"] = "2.1.1"
+default["ruby"]["version"] = "ruby2.1"

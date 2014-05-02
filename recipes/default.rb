@@ -29,15 +29,10 @@ apt_repository "brightbox-ruby-ng" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-["build-essential", "ruby2.1", "ruby-switch"].each do |name|
+["build-essential", "#{node[:ruby][:version]}"].each do |name|
   apt_package name do
     action :upgrade
   end
-end
-
-execute "ruby-switch --set #{node[:ruby][:version]}" do
-  action :run
-  not_if "ruby-switch --check | grep -q '#{node[:ruby][:version]}'"
 end
 
 cookbook_file "/etc/gemrc" do
