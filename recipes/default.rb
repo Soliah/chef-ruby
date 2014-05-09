@@ -31,10 +31,13 @@ apt_repository "brightbox-ruby-ng" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-["build-essential", "#{node[:ruby][:version]}"].each do |name|
-  apt_package name do
-    action :upgrade
-  end
+%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libmysqlclient-dev).each do |pkg|
+  apt_package pkg
+  action :install
+end
+
+apt_package node[:ruby][:version] do
+  action :upgrade
 end
 
 cookbook_file "/etc/gemrc" do
