@@ -32,8 +32,9 @@ apt_repository "brightbox-ruby-ng" do
 end
 
 %w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libmysqlclient-dev).each do |pkg|
-  apt_package pkg
-  action :install
+  apt_package pkg do
+    action :install
+  end
 end
 
 apt_package node[:ruby][:version] do
