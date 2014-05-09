@@ -31,6 +31,16 @@ apt_repository "brightbox-ruby-ng" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
+apt_repository "mysql-5.6" do
+  uri          "http://ppa.launchpad.net/ondrej/mysql-5.6/ubuntu"
+  distribution node["lsb"]["codename"]
+  components   ["main"]
+  keyserver    "keyserver.ubuntu.com"
+  key          "E5267A6C"
+  action       :add
+  notifies     :run, "execute[apt-get update]", :immediately
+end
+
 %w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libmysqlclient-dev).each do |pkg|
   apt_package pkg do
     action :install
