@@ -37,8 +37,10 @@ end
   end
 end
 
-apt_package node[:ruby][:version] do
-  action :upgrade
+[node[:ruby][:version], "#{node[:ruby][:version]}-dev"].each do |pkg|
+  apt_package pkg do
+    action :upgrade
+  end
 end
 
 cookbook_file "/etc/gemrc" do
