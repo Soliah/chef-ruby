@@ -41,7 +41,7 @@ apt_repository "mysql-5.6" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libmysqlclient-dev build-essential).each do |pkg|
+%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev postgresql-client-9.3 libmysqlclient-dev build-essential).each do |pkg|
   apt_package pkg do
     action :install
   end
