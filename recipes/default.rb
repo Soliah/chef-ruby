@@ -59,7 +59,7 @@ cookbook_file "/etc/gemrc" do
   mode   "0644"
 end
 
-["bundler", "rake", "rubygems-bundler", "aws-sdk", "pkgr", "deb-s3"].each do |gem|
+["bundler", "rake", "rubygems-bundler", "aws-sdk"].each do |gem|
   gem_package gem do
     action :upgrade
   end
