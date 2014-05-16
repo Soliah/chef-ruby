@@ -13,6 +13,7 @@ Only tested on Ubuntu 14.04, but should work on earlier versions.
 Key                    | Type   | Description
 :----------------------|--------|----------------------------------------------------------
 `["ruby"]["version"]`  | String | Version of Ruby to be installed. Defaults to `ruby2.1`
+`["ruby"]["gems"]`     | Array  | Array of gems to install. Defaults to `[]`
 
 ## Usage
 

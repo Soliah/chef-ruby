@@ -20,3 +20,4 @@
 #
 
 default["ruby"]["version"] = "ruby2.1"
+default["ruby"]["gems"] = []
