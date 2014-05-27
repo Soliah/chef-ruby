@@ -41,6 +41,15 @@ apt_repository "mysql-5.6" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
+apt_repository "postgresql" do
+  uri          "http://apt.postgresql.org/pub/repos/apt"
+  distribution node["lsb"]["codename"]
+  components   ["main"]
+  key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+  action       :add
+  notifies     :run, "execute[apt-get update]", :immediately
+end
+
 %w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev postgresql-client-9.3 libmysqlclient-dev build-essential).each do |pkg|
   apt_package pkg do
     action :install
