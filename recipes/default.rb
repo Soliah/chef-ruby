@@ -22,7 +22,7 @@
 include_recipe "apt"
 
 apt_repository "brightbox-ruby-ng" do
-  uri          "https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng#{-experimental if node[:ruby][:experimental]}"
+  uri          "https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng#{"-experimental" if node[:ruby][:experimental]}"
   distribution node["lsb"]["codename"]
   components   ["main"]
   keyserver    "keyserver.ubuntu.com"
