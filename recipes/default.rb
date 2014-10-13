@@ -22,17 +22,14 @@
 include_recipe "apt"
 
 apt_repository "brightbox-ruby-ng" do
-  uri          "https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng#{"-experimental" if node[:ruby][:experimental]}"
+  uri          "ppa:brightbox/ruby-ng#{"-experimental" if node[:ruby][:experimental]}"
   distribution node["lsb"]["codename"]
   components   ["main"]
-  keyserver    "keyserver.ubuntu.com"
-  key          "C3173AA6"
-  action       :add
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
 apt_repository "mysql-5.6" do
-  uri          "http://ppa.launchpad.net/ondrej/mysql-5.6/ubuntu"
+  uri          "ppa:ondrej/mysql-5.6"
   distribution node["lsb"]["codename"]
   components   ["main"]
   keyserver    "keyserver.ubuntu.com"
