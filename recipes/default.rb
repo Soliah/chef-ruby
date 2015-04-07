@@ -47,7 +47,7 @@ apt_repository "postgresql" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libjemalloc-dev postgresql-client-9.3 libmysqlclient-dev build-essential mysql-client-5.6).each do |pkg|
+%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libjemalloc-dev postgresql-client-9.4 libmysqlclient-dev build-essential mysql-client-5.6).each do |pkg|
   apt_package pkg do
     action :install
   end
