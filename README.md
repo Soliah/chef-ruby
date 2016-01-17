@@ -1,6 +1,6 @@
 [![Circle CI](https://circleci.com/gh/Soliah/chef-ruby.svg?style=svg)](https://circleci.com/gh/Soliah/chef-ruby)
 
-# cookbook-ruby
+# chef-ruby
 
 Cookbook to install the latest Ruby from the [Brightbox PPA](https://launchpad.net/~brightbox/+archive/ruby-ng).
 
