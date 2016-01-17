@@ -14,5 +14,5 @@ suites:
       - recipe[ruby::default]
     attributes:
       ruby:
-        mysql_dev_headers: true
-        postgresq_dev_headers: true
+        mysql_ppa: true
+        postgresq_ppa: true

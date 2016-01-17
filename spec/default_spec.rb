@@ -50,7 +50,7 @@ describe "ruby::default" do
     context "postgres_dev_headers is true" do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set["ruby"]["postgresql_dev_headers"] = true
+          node.set["ruby"]["postgresql_ppa"] = true
         end.converge(described_recipe)
       end
 
@@ -62,8 +62,8 @@ describe "ruby::default" do
     context "mysql_dev_headers is true" do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set["ruby"]["mysql_dev_headers"] = true
-          node.set["ruby"]["mysql_dev_headers_version"] = "5.5"
+          node.set["ruby"]["mysql_ppa"] = true
+          node.set["ruby"]["mysql_version"] = "5.5"
         end.converge(described_recipe)
       end
 
