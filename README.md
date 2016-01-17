@@ -12,6 +12,8 @@ Only tested on Ubuntu 14.04, but should work on earlier versions.
 
 ### ruby::default
 
+Installs Ruby.
+
 Key                         | Type   | Description
 :---------------------------|--------|----------------------------------------------------------
 `["ruby"]["version"]`       | String | Version of Ruby to be installed. Defaults to `ruby2.2`
@@ -22,6 +24,10 @@ Key                         | Type   | Description
 `["ruby"]["postgresql_ppa"]`| Bool   | Whether to add the official PostgreSQL PPA. Defaults to `false`
 `["ruby"]["mysql_ppa"]`     | Bool   | Whether to add [Ondřej Surý's](https://launchpad.net/~ondrej) MySQL PPA. Defaults to `false`
 `["ruby"]["mysql_version"]` | String | Version of the MySQL PPA to add. Defaults to `"5.7"`
+
+### ruby::upgrade
+
+Upgrades Ruby if you've changed `node["ruby"]["version"]`.
 
 ## Usage
 
