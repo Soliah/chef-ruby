@@ -1,0 +1,18 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[ruby::default]
+    attributes:
+      ruby:
+        mysql_dev_headers: true
+        postgresq_dev_headers: true

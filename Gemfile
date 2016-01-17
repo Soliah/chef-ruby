@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+gem "berkshelf"
+gem "chefspec"
+gem "serverspec"
+gem "foodcritic"
+gem "rubocop"
+gem "pry-byebug"
+gem "test-kitchen"
+gem "kitchen-docker"
+gem "rspec_junit_formatter"

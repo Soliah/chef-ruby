@@ -4,7 +4,7 @@
 #
 # Author:: Christopher Chow (<chris@chowie.net>)
 #
-# Copyright 2014, Christopher Chow
+# Copyright 2016, Christopher Chow
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,32 +22,30 @@
 include_recipe "apt"
 
 apt_repository "brightbox-ruby-ng" do
-  uri          "ppa:brightbox/ruby-ng#{"-experimental" if node[:ruby][:experimental]}"
+  uri          "ppa:brightbox/ruby-ng#{"-experimental" if node["ruby"]["experimental"]}"
   distribution node["lsb"]["codename"]
-  components   ["main"]
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-apt_repository "mysql-5.6" do
-  uri          "ppa:ondrej/mysql-5.6"
-  distribution node["lsb"]["codename"]
-  components   ["main"]
-  keyserver    "keyserver.ubuntu.com"
-  key          "E5267A6C"
-  action       :add
-  notifies     :run, "execute[apt-get update]", :immediately
+if node["ruby"]["mysql_ppa"]
+  apt_repository "mysql" do
+    uri          "ppa:ondrej/mysql-#{node["ruby"]["mysql_version"]}"
+    distribution node["lsb"]["codename"]
+    notifies     :run, "execute[apt-get update]", :immediately
+  end
 end
 
-apt_repository "postgresql" do
-  uri          "http://apt.postgresql.org/pub/repos/apt"
-  distribution "#{node["lsb"]["codename"]}-pgdg"
-  components   ["main"]
-  key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
-  action       :add
-  notifies     :run, "execute[apt-get update]", :immediately
+if node["ruby"]["postgresql_ppa"]
+  apt_repository "postgresql" do
+    uri          "http://apt.postgresql.org/pub/repos/apt"
+    distribution "#{node["lsb"]["codename"]}-pgdg"
+    components   ["main"]
+    key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+    notifies     :run, "execute[apt-get update]", :immediately
+  end
 end
 
-%w(git vim zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libpq-dev libjemalloc-dev postgresql-client-9.4 libmysqlclient-dev build-essential mysql-client-5.6).each do |pkg|
+node["ruby"]["dependencies"].each do |pkg|
   apt_package pkg do
     action :install
   end
@@ -55,30 +53,18 @@ end
 
 [node[:ruby][:version], "#{node[:ruby][:version]}-dev"].each do |pkg|
   apt_package pkg do
-    action :upgrade
+    action :install
   end
 end
 
-cookbook_file "/etc/gemrc" do
+file "/etc/gemrc" do
   action :create_if_missing
-  source "gemrc"
+  content node["ruby"]["gemrc"].to_h.to_yaml
   mode   "0644"
-end
-
-["bundler", "rake", "rubygems-bundler"].each do |gem|
-  gem_package gem do
-    action :upgrade
-  end
 end
 
 node["ruby"]["gems"].each do |gem|
   gem_package gem do
-    action :upgrade
+    action :install
   end
-end
-
-# Regenerate the binstubs for rubygems-bundler.
-execute "gem regenerate_binstubs" do
-  action :nothing
-  subscribes :run, resources("gem_package[rubygems-bundler]")
 end
