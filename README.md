@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/Soliah/chef-ruby.svg?style=svg)](https://circleci.com/gh/Soliah/chef-ruby)
+[![Circle CI](https://circleci.com/gh/kinesisptyltd/chef-ruby.svg?style=svg)](https://circleci.com/gh/kinesisptyltd/chef-ruby)
 
 # chef-ruby
 
