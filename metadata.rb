@@ -1,6 +1,6 @@
 name              "ruby"
-maintainer        "Christopher Chow"
-maintainer_email  "chris@chowie@.net"
+maintainer        "Kinesis Pty Ltd"
+maintainer_email  "devs@kinesis.org"
 license           "Apache 2.0"
 description       "Installs system Ruby from source"
 version           "2.0.0"
