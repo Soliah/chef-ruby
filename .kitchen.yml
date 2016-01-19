@@ -15,4 +15,4 @@ suites:
     attributes:
       ruby:
         mysql_ppa: true
-        postgresq_ppa: true
+        postgresql_ppa: true
