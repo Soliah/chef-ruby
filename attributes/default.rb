@@ -32,6 +32,11 @@ default["ruby"]["gemrc"] = {
   update: "--no-ri --no-rdoc"
 }
 
+default["ruby"]["postgresql_ppa"] = false
+default["ruby"]["postgresql_version"] = "9.4"
+default["ruby"]["mysql_ppa"] = false
+default["ruby"]["mysql_version"] = "5.7"
+
 default["ruby"]["dependencies"] = %w(
   autoconf
   ca-certificates
@@ -48,7 +53,6 @@ default["ruby"]["dependencies"] = %w(
   libglib2.0-dev
   libncurses-dev
   libpq-dev
-  postgresql-client
   libmysqlclient-dev
   libreadline-dev
   libssl-dev
@@ -57,8 +61,3 @@ default["ruby"]["dependencies"] = %w(
   libyaml-dev
   zlib1g-dev
 )
-
-default["ruby"]["postgresql_ppa"] = false
-default["ruby"]["postgresql_version"] = "9.4"
-default["ruby"]["mysql_ppa"] = false
-default["ruby"]["mysql_version"] = "5.7"

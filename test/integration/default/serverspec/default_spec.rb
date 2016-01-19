@@ -13,7 +13,7 @@ describe "ruby::default" do
     it { is_expected.to be_enabled }
   end
 
-  ["postgresql-client postgresql-client-common ruby2.2-dev ruby2.2"].each do |pkg|
+  ["postgresql-client-9.4", "ruby2.2-dev", "ruby2.2"].each do |pkg|
     describe package(pkg) do
       it { is_expected.to be_installed }
     end

@@ -39,7 +39,7 @@ if node["ruby"]["postgresql_ppa"]
   apt_repository "postgresql" do
     uri          "http://apt.postgresql.org/pub/repos/apt"
     distribution "#{node["lsb"]["codename"]}-pgdg"
-    components   [node["ruby"]["postgresql_version"]]
+    components   ["main"]
     key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
     notifies     :run, "execute[apt-get update]", :immediately
   end
@@ -49,6 +49,11 @@ node["ruby"]["dependencies"].each do |pkg|
   apt_package pkg do
     action :install
   end
+end
+
+apt_package "postgresql-client-#{node["ruby"]["postgresql_version"]}" do
+  action :install
+  only_if { node["ruby"]["postgresql_ppa"] }
 end
 
 [node[:ruby][:version], "#{node[:ruby][:version]}-dev"].each do |pkg|
