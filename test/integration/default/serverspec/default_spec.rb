@@ -13,12 +13,10 @@ describe "ruby::default" do
     it { is_expected.to be_enabled }
   end
 
-  describe package("ruby2.2") do
-    it { is_expected.to  be_installed }
-  end
-
-  describe package("ruby2.2-dev") do
-    it { is_expected.to be_installed }
+  ["postgresql-client postgresql-client-common ruby2.2-dev ruby2.2"].each do |pkg|
+    describe package(pkg) do
+      it { is_expected.to be_installed }
+    end
   end
 
   describe package("bundler") do

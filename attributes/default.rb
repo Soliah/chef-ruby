@@ -48,6 +48,7 @@ default["ruby"]["dependencies"] = %w(
   libglib2.0-dev
   libncurses-dev
   libpq-dev
+  postgresql-client
   libmysqlclient-dev
   libreadline-dev
   libssl-dev
