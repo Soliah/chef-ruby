@@ -39,7 +39,7 @@ if node["ruby"]["postgresql_ppa"]
   apt_repository "postgresql" do
     uri          "http://apt.postgresql.org/pub/repos/apt"
     distribution "#{node["lsb"]["codename"]}-pgdg"
-    components   ["main"]
+    components   [node["ruby"]["postgresql_version"]]
     key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
     notifies     :run, "execute[apt-get update]", :immediately
   end

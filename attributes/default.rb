@@ -58,5 +58,6 @@ default["ruby"]["dependencies"] = %w(
 )
 
 default["ruby"]["postgresql_ppa"] = false
+default["ruby"]["postgresql_version"] = "9.4"
 default["ruby"]["mysql_ppa"] = false
 default["ruby"]["mysql_version"] = "5.7"

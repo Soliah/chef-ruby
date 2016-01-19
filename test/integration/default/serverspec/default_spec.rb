@@ -28,4 +28,9 @@ describe "ruby::default" do
   describe package("rake") do
     it { is_expected.to be_installed.by("gem") }
   end
+
+  describe file("/etc/gemrc") do
+    it { is_expected.to exist }
+    its(:content) { is_expected.to contain "update: \"--no-ri --no-rdoc\"" }
+  end
 end
