@@ -46,7 +46,7 @@ if node["ruby"]["postgresql_ppa"]
 end
 
 node["ruby"]["dependencies"].each do |pkg|
-  apt_package pkg do
+  package pkg do
     action :install
   end
 end
@@ -57,7 +57,7 @@ apt_package "postgresql-client-#{node["ruby"]["postgresql_version"]}" do
 end
 
 [node[:ruby][:version], "#{node[:ruby][:version]}-dev"].each do |pkg|
-  apt_package pkg do
+  package pkg do
     action :install
   end
 end

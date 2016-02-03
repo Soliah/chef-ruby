@@ -43,21 +43,17 @@ default["ruby"]["dependencies"] = %w(
   g++
   git
   gcc
-  libc6-dev
   make
   patch
-  libbz2-dev
-  libcurl4-openssl-dev
-  libevent-dev
-  libffi-dev
-  libglib2.0-dev
-  libncurses-dev
-  libpq-dev
-  libmysqlclient-dev
-  libreadline-dev
+  bison
+  build-essential
   libssl-dev
-  libxml2-dev
-  libxslt-dev
   libyaml-dev
+  libreadline6-dev
   zlib1g-dev
+  libncurses5-dev
+  libffi-dev
+  libgdbm3
+  libgdbm-dev
+  libc6-dev
 )
