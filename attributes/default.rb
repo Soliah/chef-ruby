@@ -56,4 +56,5 @@ default["ruby"]["dependencies"] = %w(
   libgdbm3
   libgdbm-dev
   libc6-dev
+  libgeos-dev
 )
