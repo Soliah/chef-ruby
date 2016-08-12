@@ -43,6 +43,10 @@ if node["ruby"]["postgresql_ppa"]
     key          "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
     notifies     :run, "execute[apt-get update]", :immediately
   end
+
+  package "libpq-dev" do
+    action :install
+  end
 end
 
 node["ruby"]["dependencies"].each do |pkg|
