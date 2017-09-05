@@ -2,8 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/classic:latest
+      - image: buildpack-deps:trusty
+    working_directory: /home/ubuntu/chef-ruby
     steps:
+      - checkout
+
       - run:
           name:  Install Chef
           command: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c current -P chefdk
