@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    services:
-      - docker
+    docker:
+      - image: circleci/classic:latest
     steps:
       - run:
           name:  Install Chef
