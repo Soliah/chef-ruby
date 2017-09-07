@@ -1,9 +1,24 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: chef/chefdk
+    machine: true
+    parallelism: 8
+    environment:
+      KNIFE_ENV: test
+    working_directory: ~/chef-repo
     steps:
+      - checkout
       - run:
-          name: Kitchen verify
-          command: chef exec bundle exec kitchen verify
+          name: Converge all kitchen cookbooks
+          command: |
+            for test_instance in $(.circleci/bin/kitchen-tests-for-build | circleci tests split);
+            do
+              .circleci/bin/run-in-cookbook "$(dirname $test_instance)" bundle exec kitchen converge "$(basename $test_instance)"
+            done
+      - run:
+          name: Verify all kitchen cookbooks
+          command: |
+            for test_instance in $(.circleci/bin/kitchen-tests-for-build | circleci tests split);
+            do
+              .circleci/bin/run-in-cookbook "$(dirname $test_instance)" bundle exec kitchen verify "$(basename $test_instance)"
+            done
