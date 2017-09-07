@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: kinesis/ruby@sha256:b54fc2798df0a14c139b58d5f95167d2a032c4f9a11c1b787535179d23cd7326
+      - image: chef/chefdk
     steps:
       - run:
           name:  Install Chef
