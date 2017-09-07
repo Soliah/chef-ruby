@@ -5,9 +5,5 @@ jobs:
       - image: chef/chefdk
     steps:
       - run:
-          name: Install gems inside Chef Omnibus
-          command: chef exec bundle install
-
-      - run:
           name: Kitchen verify
           command: chef exec bundle exec kitchen verify
