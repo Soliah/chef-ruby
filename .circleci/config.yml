@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
-    parallelism: 8
+    parallelism: 1
     environment:
       KNIFE_ENV: test
     working_directory: ~/chef-repo
