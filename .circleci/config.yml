@@ -6,7 +6,7 @@ jobs:
     steps:
       - run:
           name:  Install Chef
-          command: curl -L https://www.chef.io/chef/install.sh | sudo bash -s -- -v 1.3.43 -P chefdk
+          command: curl -L https://www.chef.io/chef/install.sh | bash -s -- -v 1.3.43 -P chefdk
 
       - run:
           name: Install gems inside Chef Omnibus
