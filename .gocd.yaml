@@ -1,0 +1,52 @@
+environments:
+  development:
+    pipelines:
+      - chef-ruby
+pipelines:
+  chef-ruby:
+    group: development
+    materials:
+      gitMaterial1:
+        git: git@github.com:kinesisptyltd/chef-ruby.git
+    stages:
+      - test:
+          jobs:
+            test:
+              tasks:
+                - exec:
+                    command: docker-compose
+                    arguments:
+                    - up
+                    - -d
+                - exec:
+                    command: curl
+                    arguments:
+                    - https://omnitruck.chef.io/install.sh
+                    - |
+                    - sudo
+                    - bash
+                    - -s
+                    - --
+                    - -c
+                    - current
+                    - -P
+                    - chefdk
+                - exec:
+                    command: chef
+                    arguments:
+                    - exec
+                    - bundle
+                    - install
+                - exec:
+                    command: chef
+                    arguments:
+                    - exec
+                    - bundle
+                    - exec
+                    - kitchen
+                    - verify
+                - exec:
+                    run_if: any
+                    command: docker-compose
+                    arguments:
+                    - down
