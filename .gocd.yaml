@@ -21,16 +21,7 @@ pipelines:
                 - exec:
                     command: curl
                     arguments:
-                    - https://omnitruck.chef.io/install.sh
-                    - |
-                    - sudo
-                    - bash
-                    - -s
-                    - --
-                    - -c
-                    - current
-                    - -P
-                    - chefdk
+                    - https://omnitruck.chef.io/install.sh | sudo bash -s -- -c current -P chefdk
                 - exec:
                     command: chef
                     arguments:
