@@ -14,11 +14,6 @@ pipelines:
             test:
               tasks:
                 - exec:
-                    command: docker-compose
-                    arguments:
-                    - up
-                    - -d
-                - exec:
                     command: bash
                     arguments:
                     - -c
@@ -37,8 +32,3 @@ pipelines:
                     - exec
                     - kitchen
                     - verify
-                - exec:
-                    run_if: any
-                    command: docker-compose
-                    arguments:
-                    - down
