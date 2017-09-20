@@ -1,5 +1,3 @@
-[![Circle CI](https://circleci.com/gh/kinesisptyltd/chef-ruby.svg?style=svg)](https://circleci.com/gh/kinesisptyltd/chef-ruby)
-
 # chef-ruby
 
 Cookbook to install the latest Ruby from the [Brightbox PPA](https://launchpad.net/~brightbox/+archive/ruby-ng).

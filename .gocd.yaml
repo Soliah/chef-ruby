@@ -1,10 +1,10 @@
 environments:
-  development:
+  chef:
     pipelines:
       - chef-ruby
 pipelines:
   chef-ruby:
-    group: development
+    group: chef
     materials:
       gitMaterial1:
         git: git@github.com:kinesisptyltd/chef-ruby.git
