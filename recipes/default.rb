@@ -74,7 +74,7 @@ end
 
 execute "update rubygems" do
   action :run
-  command "gem update --system"
+  command "gem update --system 2.6.14"
 end
 
 node["ruby"]["gems"].each do |gem|
