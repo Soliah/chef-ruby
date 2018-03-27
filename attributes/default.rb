@@ -21,7 +21,10 @@
 
 default["ruby"]["version"] = "ruby2.2"
 default["ruby"]["experimental"] = false
-default["ruby"]["gems"] = ["bundler", "rake"]
+default["ruby"]["gems"] = {
+  "bundler" => "1.16.0",
+  "rake" => "12.3.1"
+}
 default["ruby"]["gemrc"] = {
   backtrace: false,
   benchmark: false,

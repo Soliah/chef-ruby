@@ -77,8 +77,9 @@ execute "update rubygems" do
   command "gem update --system 2.6.14"
 end
 
-node["ruby"]["gems"].each do |gem|
+node["ruby"]["gems"].each do |gem, version|
   gem_package gem do
     action :install
+    version version
   end
 end
