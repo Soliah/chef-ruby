@@ -72,11 +72,6 @@ file "/etc/gemrc" do
   mode   "0644"
 end
 
-execute "update rubygems" do
-  action :run
-  command "gem update --system 2.6.14"
-end
-
 node["ruby"]["gems"].each do |gem, version|
   gem_package gem do
     action :install
